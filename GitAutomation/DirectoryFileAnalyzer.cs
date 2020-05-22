@@ -138,7 +138,7 @@ namespace GitAutomation
                 var oversizedFiles = GetOversizedFilesInDirectory(directory);
 
                 DirCommitStruct dirCommit = new DirCommitStruct(directory, oversizedFiles, hiddenDirs, hiddenFiles);
-                CommitStruct commit = new CommitStruct(CommitEnumeration.DIRCOMMIT, directory, dirCommit, new List<FileInfo>());
+                CommitStruct commit = new CommitStruct(directory, dirCommit, new List<FileInfo>(), CommitEnumeration.DIRCOMMIT);
 
                 commitsList.Add(commit);
 
@@ -162,7 +162,7 @@ namespace GitAutomation
             {
                 DirCommitStruct dirCommit = new DirCommitStruct(null, null, null, null);
                 string commitMessage = $"{directory}: {files.First().Name}";
-                CommitStruct commit = new CommitStruct(CommitEnumeration.SINGLEFILECOMMIT, commitMessage, dirCommit, new List<FileInfo> { files.First()});
+                CommitStruct commit = new CommitStruct(commitMessage, dirCommit, new List<FileInfo> { files.First()}, CommitEnumeration.SINGLEFILECOMMIT);
                 commitsList.Add(commit);
                 return;
             }
@@ -180,7 +180,7 @@ namespace GitAutomation
                     DirCommitStruct dirCommit = new DirCommitStruct(null, null, null, null);
 
                     string commitMessage = $"{directory}: file bundle {++count}";
-                    CommitStruct commit = new CommitStruct(CommitEnumeration.FILEBUNDLECOMMIT, commitMessage, dirCommit, new List<FileInfo>(fileBundleList));
+                    CommitStruct commit = new CommitStruct(commitMessage, dirCommit, new List<FileInfo>(fileBundleList), CommitEnumeration.FILEBUNDLECOMMIT);
 
                     commitsList.Add(commit);
 
@@ -200,7 +200,7 @@ namespace GitAutomation
                 DirCommitStruct dirCommit = new DirCommitStruct(null, null, null, null);
 
                 string commitMessage = $"{directory}: file bundle {++count}";
-                CommitStruct commit = new CommitStruct(CommitEnumeration.FILEBUNDLECOMMIT, commitMessage, dirCommit, new List<FileInfo>(fileBundleList));
+                CommitStruct commit = new CommitStruct(commitMessage, dirCommit, new List<FileInfo>(fileBundleList), CommitEnumeration.FILEBUNDLECOMMIT);
 
                 commitsList.Add(commit);
             }            

@@ -19,7 +19,7 @@ namespace GitAutomation
         public List<DirectoryInfo> hiddenDirInfos;
         public List<FileInfo> hiddenFileInfos;
 
-        public DirCommitStruct(string commitObject, List<FileInfo> overSizedFileInfos, List<DirectoryInfo> hiddenDirInfos, List<FileInfo> hiddenFileInfos)
+        public DirCommitStruct(string commitObject = null, List<FileInfo> overSizedFileInfos = null, List<DirectoryInfo> hiddenDirInfos = null, List<FileInfo> hiddenFileInfos = null)
         {
             this.commitObject = commitObject;
             this.overSizedFileInfos = overSizedFileInfos;
@@ -35,7 +35,7 @@ namespace GitAutomation
         public DirCommitStruct dirCommit;
         public List<FileInfo> fileInfos;
 
-        public CommitStruct(CommitEnumeration commitType, string commitMesage, DirCommitStruct dirCommit, List<FileInfo> fileInfos)
+        public CommitStruct(string commitMesage, DirCommitStruct dirCommit, List<FileInfo> fileInfos = null, CommitEnumeration commitType = CommitEnumeration.Invalid)
         {
             this.commitType = commitType;
             this.commitMesage = commitMesage;
